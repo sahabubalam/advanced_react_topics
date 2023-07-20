@@ -93,7 +93,7 @@ const Test = () => {
                   </table>
                 )}
               />
-              <div>
+              <div style={{textAlign:'left'}}>
                 <button type="submit" className="btn btn-sm btn-primary">
                   Submit
                 </button>
