@@ -10,7 +10,7 @@ const CommonLayout = ({ children }) => {
     <Layout
       style={{
         minHeight: "100vh",
-        // marginLeft: 30,
+        marginLeft: 208,
         transition: ".4s",
       }}
     >
