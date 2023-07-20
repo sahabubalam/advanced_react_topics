@@ -96,7 +96,7 @@ const SideBar = () => {
         top: 0,
         bottom: 0,
         transition: '.4s',
-        marginTop:45
+        // marginTop:45
       }}
       width={210}
       trigger={null}
