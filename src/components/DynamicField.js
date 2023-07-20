@@ -72,23 +72,37 @@ const DynamicField = () => {
             />
             {field.editable ? (
               <>
-                <Button type="primary" onClick={() => handleSaveField(index)}>
+                <Button
+                  type="primary"
+                  onClick={() => handleSaveField(index)}
+                  style={{ margin: "3px" }}
+                >
                   Save
                 </Button>
               </>
             ) : (
               <>
-                <Button type="primary" onClick={() => handleEditField(index)}>
+                <Button
+                  type="primary"
+                  onClick={() => handleEditField(index)}
+                  style={{ margin: "3px" }}
+                >
                   Edit
                 </Button>
               </>
             )}
-            <Button type="danger" onClick={() => handleRemoveFields(index)}>
+            <Button
+              type="danger"
+              onClick={() => handleRemoveFields(index)}
+              style={{ margin: "3px" }}
+            >
               Remove
             </Button>
           </div>
         ))}
-        <Button onClick={handleAddField}>Add Field</Button>
+        <div style={{ textAlign: "left",marginLeft:'40px'}}>
+          <Button onClick={handleAddField}>Add Field</Button>
+        </div>
       </div>
     </CommonLayout>
   );
