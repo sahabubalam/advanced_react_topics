@@ -17,6 +17,7 @@ const AppHeader = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        height:"45px"
       }}
     >
     </Layout.Header>
