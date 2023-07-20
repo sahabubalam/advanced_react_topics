@@ -8,7 +8,7 @@ import {
   MenuUnfoldOutlined,
   PieChartOutlined,
 } from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { Button, Menu ,Layout} from "antd";
 import { useNavigate } from "react-router-dom";
 function getItem(label, key, icon, children, type) {
   return {
@@ -19,7 +19,8 @@ function getItem(label, key, icon, children, type) {
     type,
   };
 }
-const TestComponent = () => {
+const { Sider } = Layout;
+const SideBar = () => {
   const navigate = useNavigate();
 
   const [menus] = useState([
@@ -86,11 +87,21 @@ const TestComponent = () => {
   ]);
 
   return (
-    <div
+    <Sider
       style={{
-        width: 256,
-        marginTop: 3,
+        overflow: 'auto',
+        height: '100vh',
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        bottom: 0,
+        transition: '.4s',
+        marginTop:50
       }}
+      width={210}
+      trigger={null}
+      collapsible
+      theme="light"
     >
       <Menu
         onClick={(value) => {
@@ -103,8 +114,8 @@ const TestComponent = () => {
         theme="dark"
         items={menus}
       />
-    </div>
+   </Sider>
   );
 };
 
-export default TestComponent;
+export default SideBar;

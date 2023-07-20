@@ -1,6 +1,7 @@
 import { pdf } from "@react-pdf/renderer";
 import { Button } from "antd";
 import React from "react";
+import CommonLayout from "./CommonLayout";
 import Invoice from "./Invoice";
 
 const InvoiceButton = () => {
@@ -23,9 +24,11 @@ const InvoiceButton = () => {
     };
   };
   return (
-    <div>
-      <Button onClick={handleDownloadPdf}>Download</Button>
-    </div>
+    <CommonLayout>
+      <div>
+        <Button onClick={handleDownloadPdf}>Download</Button>
+      </div>
+    </CommonLayout>
   );
 };
 

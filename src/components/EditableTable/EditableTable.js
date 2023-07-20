@@ -1,5 +1,6 @@
 import { Button, Form, Input, Table } from "antd";
 import React, { useEffect, useState } from "react";
+import CommonLayout from "../CommonLayout";
 
 const EditableTable = () => {
   const [dataSource, setDatasource] = useState([]);
@@ -76,22 +77,23 @@ const EditableTable = () => {
     },
   ];
   const onFinish = (values) => {
-      console.log({values});
-      const updatedDataSource = [...dataSource];
-      updatedDataSource.splice(editingRow,1,{...values,key:editingRow});
-      setDatasource(updatedDataSource);
-      setEditingRow(null);
-
+    console.log({ values });
+    const updatedDataSource = [...dataSource];
+    updatedDataSource.splice(editingRow, 1, { ...values, key: editingRow });
+    setDatasource(updatedDataSource);
+    setEditingRow(null);
   };
   return (
-    <div className="App" style={{ margin: "50px" }}>
-      <header className="App-Header">
-        <Form form={form} onFinish={onFinish}>
-          <Table columns={columns} dataSource={dataSource}></Table>
-          <Button htmlType="submit">Submit</Button>
-        </Form>
-      </header>
-    </div>
+    <CommonLayout>
+      <div className="App" style={{ marginLeft: "200px" }}>
+        <header className="App-Header">
+          <Form form={form} onFinish={onFinish}>
+            <Table columns={columns} dataSource={dataSource}></Table>
+            {/* <Button htmlType="submit">Submit</Button> */}
+          </Form>
+        </header>
+      </div>
+    </CommonLayout>
   );
 };
 

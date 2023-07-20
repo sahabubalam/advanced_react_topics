@@ -12,7 +12,6 @@ import Table from './components/Table';
 
 import Home from './components/Home';
 import Transfer from './components/Transfers';
-import TestComponent from './components/Test/index.js'
 import EditableTable from './components/EditableTable/EditableTable';
 import Pdf from './components/Pdf';
 import InvoiceButton from './components/InvoiceButton';
@@ -29,6 +28,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { useDispatch } from 'react-redux';
 import { setUser } from './components/auth/user.reducers';
 import { useEffect } from 'react';
+import SideBar from './components/SideBar';
+import CommonLayout from './components/CommonLayout';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<TestComponent />} />
+          <Route path="/" element={<CommonLayout />} />
           <Route path="/practice" element={<Practice/>} />
           <Route path="/checkbox-practice" element={<CheckBoxPratice/>} />
           <Route path="/dynamic" element={<MultiInput/>} />

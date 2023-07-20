@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { PlusOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { Option } from "antd/lib/mentions";
+import CommonLayout from "./CommonLayout";
 
 const formItemLayoutWithOutLabel = {
   wrapperCol: {
@@ -57,95 +58,98 @@ const InputWithAutoSelect = () => {
   };
 
   return (
-    <div style={{ margin: "20px" }}>
-      <Form
-        form={form}
-        name="dynamic_form_item"
-        {...formItemLayoutWithOutLabel}
-        onFinish={onFinish}
-        style={{ maxWidth: "100%" }}
-      >
-        <Form.List name="info">
-          {(fields, { add, remove }) => (
-            <>
-              {fields.map((field, index) => (
-                <Row key={index}>
-                  <Col span={7} style={{ paddingRight: "10px" }}>
-                    <Form.Item
-                      {...field}
-                      name={[field.name, "selectField2"]}
-                      rules={[
-                        { required: true, message: "Missing selectField2" },
-                      ]}
-                      span={8}
+    <CommonLayout>
+      <div style={{ marginLeft: "200" }}>
+        <Form
+          form={form}
+          name="dynamic_form_item"
+          {...formItemLayoutWithOutLabel}
+          onFinish={onFinish}
+          style={{ maxWidth: "100%" }}
+        >
+          <Form.List name="info">
+            {(fields, { add, remove }) => (
+              <>
+                {fields.map((field, index) => (
+                  <Row key={index}>
+                    <Col span={7} style={{ paddingRight: "10px" }}>
+                      <Form.Item
+                        {...field}
+                        name={[field.name, "selectField2"]}
+                        rules={[
+                          { required: true, message: "Missing selectField2" },
+                        ]}
+                        span={8}
+                        style={{marginLeft:'200px'}}
+                      >
+                        <Select placeholder="Select">
+                          {all?.map((item, index) => (
+                            <Option value={item.id} key={index}>
+                              {item.name}
+                            </Option>
+                          ))}
+                        </Select>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      span={7}
+                      style={{ paddingRight: "10px", paddingLeft: "10px" }}
                     >
-                      <Select placeholder="Select">
-                        {all?.map((item, index) => (
-                          <Option value={item.id} key={index}>
-                            {item.name}
-                          </Option>
-                        ))}
-                      </Select>
-                    </Form.Item>
-                  </Col>
-                  <Col
-                    span={7}
-                    style={{ paddingRight: "10px", paddingLeft: "10px" }}
-                  >
-                    <Form.Item
-                      {...field}
-                      name={[field.name, "address"]}
-                      rules={[{ required: true, message: "Missing address" }]}
-                      span={8}
-                    >
-                      <Input placeholder="address" />
-                    </Form.Item>
-                  </Col>
-                  <Col span={7} style={{ paddingLeft: "10px" }}>
-                    <Form.Item
-                      {...field}
-                      name={[field.name, "email"]}
-                      rules={[{ required: true, message: "Missing email" }]}
-                      span={8}
-                    >
-                      <Input placeholder="email" />
-                    </Form.Item>
-                  </Col>
-                  <Col span={1}>
-                    <MinusCircleOutlined
-                      onClick={() => {
-                        const fieldValue = form.getFieldValue("info");
-                        console.log({fieldValue});
-                        const removedOptionId =
-                          fieldValue[field.name]["selectField2"];
-                        const newUnusedOptions = [...unusedOptions];
-                        console.log({removedOptionId});
-                        console.log("sssssss",newUnusedOptions);
-                        newUnusedOptions.push(
-                          all.find((option) => option.id === removedOptionId)
-                        );
-                        setUnusedOptions(newUnusedOptions);
-                        remove(field.name);
-                      }}
-                    />
-                  </Col>
-                </Row>
-              ))}
-            </>
-          )}
-        </Form.List>
-        <Form.Item>
-          <Button type="dashed" onClick={add} block icon={<PlusOutlined />}>
-            Add info
-          </Button>
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+                      <Form.Item
+                        {...field}
+                        name={[field.name, "address"]}
+                        rules={[{ required: true, message: "Missing address" }]}
+                        span={8}
+                      >
+                        <Input placeholder="address" />
+                      </Form.Item>
+                    </Col>
+                    <Col span={7} style={{ paddingLeft: "10px" }}>
+                      <Form.Item
+                        {...field}
+                        name={[field.name, "email"]}
+                        rules={[{ required: true, message: "Missing email" }]}
+                        span={8}
+                      >
+                        <Input placeholder="email" />
+                      </Form.Item>
+                    </Col>
+                    <Col span={1}>
+                      <MinusCircleOutlined
+                        onClick={() => {
+                          const fieldValue = form.getFieldValue("info");
+                          console.log({ fieldValue });
+                          const removedOptionId =
+                            fieldValue[field.name]["selectField2"];
+                          const newUnusedOptions = [...unusedOptions];
+                          console.log({ removedOptionId });
+                          console.log("sssssss", newUnusedOptions);
+                          newUnusedOptions.push(
+                            all.find((option) => option.id === removedOptionId)
+                          );
+                          setUnusedOptions(newUnusedOptions);
+                          remove(field.name);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+                ))}
+              </>
+            )}
+          </Form.List>
+          <Form.Item style={{marginLeft:'200px'}}>
+            <Button type="dashed" onClick={add} block icon={<PlusOutlined />}>
+              Add info
+            </Button>
+          </Form.Item>
+          <Form.Item style={{marginLeft:'200px', textAlign: "left" }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </CommonLayout>
   );
 };
 

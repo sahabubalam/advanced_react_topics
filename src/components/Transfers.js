@@ -1,6 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { Transfer } from "antd";
+import CommonLayout from "./CommonLayout";
 
 const Transfers = () => {
   const [form] = Form.useForm();
@@ -55,67 +56,60 @@ const Transfers = () => {
   };
 
   return (
-    <div className="mt-5">
-      <Form
-        form={form}
-        name="control-hooks"
-        onFinish={onFinish}
-        initialValues={{
-          name: "",
-          task: [],
-          taskIds: {targetKeys},
-          infoIds: {targetKeys1}
-        }}
-      >
-        <Form.Item
-          name="name"
-          label="Note"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+    <CommonLayout>
+      <div style={{ marginLeft: "200px" }}>
+        <Form
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          initialValues={{
+            name: "",
+            task: [],
+            taskIds: { targetKeys },
+            infoIds: { targetKeys1 },
+          }}
         >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="taskIds"
-          label="Tasks"
-          rules={[]}
-          valuePropsName="targetKeys"
-        >
-          <Transfer
-            dataSource={data.task}
-            titles={["Source", "Target"]}
-            targetKeys={targetKeys}
-            onSelectChange={onSelectChange}
-            onChange={onChange}
-            render={(item) => item.title}
-          />
-        </Form.Item>
-        <Form.Item
-          name="infoIds"
-          label="Information"
-          rules={[]}
-          valuePropsName="targetKeys"
-        >
-          <Transfer
-            dataSource={data.info}
-            titles={["Source", "Target"]}
-            targetKeys={targetKeys1}
-            onSelectChange={onSelectChange1}
-            onChange={onChange1}
-            render={(item) => item.title}
-          />
-        </Form.Item>
+          <Form.Item
+            name="name"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="Note" />
+          </Form.Item>
+          <h2 style={{ textAlign: "left" }}>Task Record</h2>
+          <Form.Item name="taskIds" rules={[]} valuePropsName="targetKeys">
+            <Transfer
+              dataSource={data.task}
+              titles={["Source", "Target"]}
+              targetKeys={targetKeys}
+              onSelectChange={onSelectChange}
+              onChange={onChange}
+              render={(item) => item.title}
+            />
+          </Form.Item>
+          <h2 style={{ textAlign: "left" }}>Information</h2>
+          <Form.Item name="infoIds" rules={[]} valuePropsName="targetKeys">
+            <Transfer
+              dataSource={data.info}
+              titles={["Source", "Target"]}
+              targetKeys={targetKeys1}
+              onSelectChange={onSelectChange1}
+              onChange={onChange1}
+              render={(item) => item.title}
+            />
+          </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+          <Form.Item style={{ textAlign: "left" }}>
+            <Button type="primary" htmlType="submit" style={{textAlign:"left"}}>
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </CommonLayout>
   );
 };
 
