@@ -112,7 +112,6 @@ const SideBar = () => {
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
-        // theme="dark"
         items={menus}
       />
    </Sider>

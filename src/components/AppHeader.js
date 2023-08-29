@@ -9,7 +9,7 @@ const AppHeader = () => {
       className="site-layout-background"
       style={{
         color: "#ffffff",
-        backgroundColor: "#391B52",
+        backgroundColor: "#36454F",
         fontSize: "20px",
         position: "sticky",
         top: 0,
@@ -17,9 +17,12 @@ const AppHeader = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        height:"45px"
+        height:"65px"
       }}
     >
+      <div style={{ alignItems:'center' }}>
+        <p style={{ alignItems:'center' }}>Practice Project</p>
+      </div>
     </Layout.Header>
   );
 };
