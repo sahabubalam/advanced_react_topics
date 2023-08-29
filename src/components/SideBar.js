@@ -96,9 +96,10 @@ const SideBar = () => {
         top: 0,
         bottom: 0,
         transition: '.4s',
+        backgroundColor:'#ffffff'
         // marginTop:45
       }}
-      width={210}
+      width={220}
       trigger={null}
       collapsible
       theme="light"
@@ -111,7 +112,7 @@ const SideBar = () => {
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
-        theme="dark"
+        // theme="dark"
         items={menus}
       />
    </Sider>
