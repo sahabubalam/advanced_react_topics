@@ -30,6 +30,7 @@ import { setUser } from './components/auth/user.reducers';
 import { useEffect } from 'react';
 import SideBar from './components/SideBar';
 import CommonLayout from './components/CommonLayout';
+import Login1 from './components/Login';
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/export-xlsx" element={<ExportXlsx/>} />
           <Route path="/multiple-practice" element={<MultiplePractice/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/design" element={<Login1/>} />
     
         </Routes>
       </BrowserRouter>
